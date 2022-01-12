@@ -1,0 +1,26 @@
+{
+  "name": "insea-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --ext .js,.mjs",
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "type": "module",
+  "author": "Mouad Belbah",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.3.4",
+    "jest": "^27.4.7",
+    "prettier": "^2.5.1"
+  }
+}
