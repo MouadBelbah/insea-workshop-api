@@ -1,18 +1,14 @@
-import express from 'express'
-import bp from 'body-parser'
+import dotenv from 'dotenv'
+import app from './app.js'
+import connectToMongo from './mongo.js'
 
-const { urlencoded, json } = bp
+dotenv.config()
+async function startServer() {
+  await connectToMongo()
 
-const x = 1
+  app.listen(8080, () => {
+    console.log('Server on http://localhost:8080 🚀')
+  })
+}
 
-const app = express()
-app.use(urlencoded({ extended: true }))
-app.use(json())
-
-app.get('/', (req, res) => {
-  res.json({ status: 'OK' })
-})
-
-app.listen(8080, () => {
-  console.log('Server on http://localhost:8080 🚀')
-})
+startServer()
