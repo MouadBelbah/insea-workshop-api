@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt'
-import { Schema, model } from 'mongoose'
+import pkg from 'mongoose'
+const { Schema, model } = pkg
 
 const UserSchema = new Schema(
   {
@@ -28,7 +29,7 @@ export const comparePassword = async (plainTextPassword, hash) => {
 }
 
 export const createUser = async ({ email, name, password }) => {
-  const hashedPassword = hashPassword(password)
+  const hashedPassword = await hashPassword(password)
 
   const user = await User.create({ email, name, password: hashedPassword })
   return user
