@@ -23,6 +23,11 @@ const typeDefs = gql`
     video: Video
   }
 
+  type DeleteVideoResponse {
+    success: Boolean!
+    message: String!
+  }
+
   input AddVideoInput {
     title: String!
     description: String
@@ -30,8 +35,13 @@ const typeDefs = gql`
     length: Int
   }
 
+  input DeleteVideoInput {
+    id: ID!
+  }
+
   type Mutation {
     addVideo(input: AddVideoInput!): AddVideoResponse!
+    deleteVideo(input: DeleteVideoInput!): DeleteVideoResponse!
   }
   type Query {
     videosForHome: [Video!]!
