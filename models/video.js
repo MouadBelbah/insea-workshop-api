@@ -27,3 +27,20 @@ export const getVideoById = async (id) => Video.findOne({ _id: id }).lean()
 
 export const getVideosByOwnerId = async (id) =>
   Video.findOne({ owner: id }).lean()
+
+export const createVideo = async ({
+  title,
+  description,
+  owner,
+  thumbnail,
+  length,
+}) => {
+  const video = await Video.create({
+    title,
+    description,
+    owner: owner._id,
+    thumbnail,
+    length,
+  })
+  return video
+}

@@ -17,11 +17,6 @@ const typeDefs = gql`
     email: String!
   }
 
-  type Query {
-    videosForHome: [Video!]!
-    video(id: ID!): Video!
-  }
-
   type AddVideoResponse {
     success: Boolean!
     message: String!
@@ -37,6 +32,10 @@ const typeDefs = gql`
 
   type Mutation {
     addVideo(input: AddVideoInput!): AddVideoResponse!
+  }
+  type Query {
+    videosForHome: [Video!]!
+    video(id: ID!): Video!
   }
 `
 
