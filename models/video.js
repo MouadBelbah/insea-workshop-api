@@ -25,8 +25,7 @@ export const Video = model('Video', VideoSchema)
 
 export const getVideoById = async (id) => Video.findOne({ _id: id }).lean()
 
-export const getVideosByOwnerId = async (id) =>
-  Video.findOne({ owner: id }).lean()
+export const getVideosByOwnerId = async (id) => Video.find({ owner: id }).lean()
 
 export const createVideo = async ({
   title,
