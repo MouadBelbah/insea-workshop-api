@@ -27,6 +27,11 @@ const typeDefs = gql`
     success: Boolean!
     message: String!
   }
+  type LoginResponse {
+    success: Boolean!
+    message: String!
+    token: String
+  }
 
   input AddVideoInput {
     title: String!
@@ -39,9 +44,15 @@ const typeDefs = gql`
     id: ID!
   }
 
+  input LoginInput {
+    email: String!
+    password: String!
+  }
+
   type Mutation {
     addVideo(input: AddVideoInput!): AddVideoResponse!
     deleteVideo(input: DeleteVideoInput!): DeleteVideoResponse!
+    login(input: LoginInput!): LoginResponse!
   }
   type Query {
     videosForHome: [Video!]!
