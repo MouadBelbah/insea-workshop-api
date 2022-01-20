@@ -11,3 +11,7 @@ export const jwt = {
   timeUnit: 'days',
   expiration: 1,
 }
+
+export const server = {
+  port: process.env.PORT || 8080,
+}

@@ -10,7 +10,10 @@ import connectToMongo from './mongo.js'
 import typeDefs from './schema.js'
 import resolvers from './resolvers.js'
 
+import * as config from './config.js'
+
 async function startServer() {
+  const { server: serverConfig } = config
   await connectToMongo()
 
   const httpServer = http.createServer(app)
@@ -33,8 +36,12 @@ async function startServer() {
 
   await server.start()
   server.applyMiddleware({ app })
-  await new Promise((resolve) => httpServer.listen({ port: 8080 }, resolve))
-  console.log(`🚀 Server ready at http://localhost:8080${server.graphqlPath}`)
+  await new Promise((resolve) =>
+    httpServer.listen({ port: serverConfig.port }, resolve)
+  )
+  console.log(
+    `🚀 Server ready at http://localhost:${serverConfig.port}${server.graphqlPath}`
+  )
 }
 
 startServer()
